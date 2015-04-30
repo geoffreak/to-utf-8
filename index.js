@@ -25,7 +25,7 @@ function toutf8 (opts) {
   if(encoding) return convertFrom(encoding)
     
   // detect encoding first
-  return peek(function (data, swap) {
+  return peek({newline: false}, function (data, swap) {
     if(!Buffer.isBuffer(data)) return swap(new Error('No buffer'))
     var matches = detect(data)
     var encoding = matches.length > 0 && matches[0].confidence > conf
